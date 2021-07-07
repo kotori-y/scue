@@ -15,6 +15,8 @@ import DruglikenessResult from "../pages/Druglikeness/DruglikenessResult/Index";
 import DruglikenessResultError from "../pages/Druglikeness/DruglikenessResult/DruglikenessResultError.vue";
 import DruglikenessResultTable from "../pages/Druglikeness/DruglikenessResult/DruglikenessResultTable.vue";
 import DruglikenessMain from "../pages/Druglikeness/DruglikenessMain/Index";
+// eslint-disable-next-line no-unused-vars
+import {getCookie} from "../../public/js/scripts"
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -42,7 +44,7 @@ const router = new VueRouter({
               name: "DruglikenessResult",
               component: DruglikenessResultTable,
               beforeEnter: (to, from, next) => {
-                if (!localStorage.druglikeness_result) next({ name: "DruglikenessResultError" });
+                if (!getCookie("druglikeness_result")) next({ name: "DruglikenessResultError" });
                 else next();
               },
             },
