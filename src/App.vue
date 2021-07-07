@@ -1,19 +1,32 @@
+<!--
+ * @Author: kotori Y
+ * @Date: 2021-07-05 12:47:04
+ * @LastEditTime: 2021-07-07 10:37:09
+ * @LastEditors: Kotori Y
+ * @Description: In User Settings Edit
+ * @FilePath: /fastscopy_frontend/src/App.vue
+-->
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Navi />
+    <router-view></router-view>
+    <Foot />
   </div>
+  <!-- <Navi /> -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navi from "./components/Navi/Index";
+import Foot from "./components/Foot/Index"
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Navi,
+    Foot,
+    // Home
+  },
+};
 </script>
 
 <style>
