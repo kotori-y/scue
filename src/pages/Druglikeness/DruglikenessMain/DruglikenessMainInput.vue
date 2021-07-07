@@ -1,11 +1,11 @@
 <!--
  * @Author: Kotori Y
  * @Date: 2021-07-06 13:52:07
- * @LastEditTime: 2021-07-07 10:28:29
+ * @LastEditTime: 2021-07-07 14:10:06
  * @LastEditors: Kotori Y
  * @Description: 
  * @FilePath: /fastscopy_frontend/src/pages/Druglikeness/DruglikenessMain/DruglikenessMainInput.vue
- * @Disclam: I love Megumi forever and ever!!!
+ * @Disclaim: I love Megumi forever and ever!!!
 -->
 <template>
   <form class="border p-3 border-top-0">
@@ -24,7 +24,6 @@
         rows="15"
         name="smiles-list"
         datatype="Require"
-        msg="This field is required!"
         placeholder="Enter SMILES"
         v-model="smiles"
       ></textarea>
@@ -58,7 +57,7 @@ export default {
         console.log(this.smiles.split(/\W+/));
         axios({
           method: "post",
-          url: "http://127.0.0.1:5555/cal",
+          url: "http://192.168.1.126:5555/cal",
           data: {
             smiles: this.smiles.split(/\W+/),
             showSmiles: false,

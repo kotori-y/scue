@@ -5,7 +5,7 @@
  * @LastEditors: Kotori Y
  * @Description: 
  * @FilePath: /fastscopy_frontend/src/pages/Home/index.vue
- * @Disclam: I love Megumi forever and ever!!!
+ * @Disclaim: I love Megumi forever and ever!!!
 -->
 
 <template>

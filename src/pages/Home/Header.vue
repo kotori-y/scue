@@ -5,7 +5,7 @@
  * @LastEditors: Kotori Y
  * @Description: The header of homepage
  * @FilePath: /fastscopy_frontend/src/pages/Home/Header.vue
- * @Disclam: I love Megumi forever and ever!!!
+ * @Disclaim: I love Megumi forever and ever!!!
 -->
 <template>
   <header class="bg-dark py-5">

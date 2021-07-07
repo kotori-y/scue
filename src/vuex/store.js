@@ -1,11 +1,11 @@
 /*
  * @Author: Kotori Y
  * @Date: 2021-07-06 20:04:06
- * @LastEditTime: 2021-07-07 10:22:04
+ * @LastEditTime: 2021-07-07 14:21:16
  * @LastEditors: Kotori Y
  * @Description: 
  * @FilePath: /fastscopy_frontend/src/vuex/store.js
- * @Disclam: I love Megumi forever and ever!!!
+ * @Disclaim: I love Megumi forever and ever!!!
  */
 
 import Vue from "vue"
@@ -15,7 +15,7 @@ Vue.use(Vuex)
 
 // init state
 const state = {
-  druglikeness_result: JSON.parse(localStorage.getItem("result"))
+  druglikeness_result: JSON.parse(localStorage.getItem("druglikeness_result"))
 }
 
 const actions = {
