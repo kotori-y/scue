@@ -1,23 +1,14 @@
-<!--
- * @Author: Kotori Y
- * @Date: 2021-07-06 13:45:18
- * @LastEditTime: 2021-07-06 14:38:40
- * @LastEditors: Kotori Y
- * @Description: 
- * @FilePath: /fastscopy_frontend/src/pages/Druglikeness/DruglikenessNavi.vue
- * @Disclaim: I love Megumi forever and ever!!!
--->
 <template>
   <div class="container">
     <nav aria-label="breadcrumb" class="mt-2">
-      <p>Druglikeness Evaluation</p>
+      <slot></slot>
     </nav>
   </div>
 </template>
 
 <script>
 export default {
-  name: "DruglikessNavi",
+  name: "CalNavi",
 };
 </script>
 
@@ -30,9 +21,6 @@ nav {
   align-items: center;
   line-height: 50px;
   text-align: center;
-}
-
-p {
   vertical-align: middle;
   font-size: 20px;
 }

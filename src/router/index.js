@@ -9,14 +9,14 @@
 
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../pages/Home/Index";
-import Druglikeness from "../pages/Druglikeness/Index";
-import DruglikenessResult from "../pages/Druglikeness/DruglikenessResult/Index";
-import DruglikenessResultError from "../pages/Druglikeness/DruglikenessResult/DruglikenessResultError.vue";
-import DruglikenessResultTable from "../pages/Druglikeness/DruglikenessResult/DruglikenessResultTable.vue";
-import DruglikenessMain from "../pages/Druglikeness/DruglikenessMain/Index";
-// eslint-disable-next-line no-unused-vars
+import Home from "@/pages/Home/Index";
+import Druglikeness from "@/pages/Druglikeness/Index";
+import DruglikenessResult from "@/pages/Druglikeness/DruglikenessResult/Index";
+import DruglikenessResultTable from "@/pages/Druglikeness/DruglikenessResult/DruglikenessResultTable.vue";
+import DruglikenessMain from "@/pages/Druglikeness/DruglikenessMain";
+import EarlyVisit from "@/pages/ResultError/EarlyVisit";
 import {getCookie} from "../../public/js/scripts"
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -44,14 +44,14 @@ const router = new VueRouter({
               name: "DruglikenessResult",
               component: DruglikenessResultTable,
               beforeEnter: (to, from, next) => {
-                if (!getCookie("druglikeness_result")) next({ name: "DruglikenessResultError" });
+                if (!getCookie("druglikeness_result")) next({name: "EarlyVisit"});
                 else next();
               },
             },
             {
               path: "error",
-              component: DruglikenessResultError,
-              name: "DruglikenessResultError",
+              component: EarlyVisit,
+              name: "EarlyVisit",
             },
           ],
         },

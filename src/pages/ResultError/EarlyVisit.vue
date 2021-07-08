@@ -1,26 +1,17 @@
-<!--
- * @Author: Kotori Y
- * @Date: 2021-07-07 09:34:42
- * @LastEditTime: 2021-07-07 09:47:31
- * @LastEditors: Kotori Y
- * @Description: 
- * @FilePath: /fastscopy_frontend/src/pages/Druglikeness/DruglikenessResult/DruglikenessResultError.vue
- * @Disclaim: I love Megumi forever and ever!!!
--->
 <template>
   <div class="error">
     <h1>
-      You shouldn't be here at this time<br />
+      You shouldn't be here at this time<br/>
       You will return to calculate page after {{ s }}s
     </h1>
-    <img src="../../../../public/imgs/YouShallNotPass.jpg" alt="" srcset="" />
+    <img alt="" src="../../../public/imgs/YouShallNotPass.jpg" srcset=""/>
   </div>
 </template>
 
 <script>
 export default {
-  name: "DruglikenessResultError",
-  data(){
+  name: "EarlyVisit",
+  data() {
     return {
       s: 3
     }

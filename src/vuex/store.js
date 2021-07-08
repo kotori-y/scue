@@ -10,9 +10,10 @@
 
 import Vue from "vue"
 import Vuex from "vuex"
-import {setCookie, getCookie} from "../../public/js/scripts"
-Vue.use(Vuex)
+import axios from "axios"
+import {getCookie, setCookie} from "../../public/js/scripts"
 
+Vue.use(Vuex)
 
 
 // init state
@@ -21,17 +22,24 @@ const state = {
 }
 
 const actions = {
-  updateResult(context, value) {
-    context.commit("UPDATE", value)
+  async evaluateDruglikeness(context, params) {
+    return axios({
+      method: "post",
+      url: "http://192.168.1.128:8000/cal",
+      data: params
+    }).then(resp => {
+      context.commit("EVALUATE_DRUGLIKENESS", resp.data)
+    })
   }
 }
 
 const mutations = {
-  UPDATE(state, value) {
+  EVALUATE_DRUGLIKENESS(state, value) {
     state.druglikeness_result = value
     setCookie("druglikeness_result", JSON.stringify(value))
   }
 }
+
 
 const store = new Vuex.Store({
   state,

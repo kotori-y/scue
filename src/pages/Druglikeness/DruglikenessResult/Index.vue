@@ -4,7 +4,7 @@
  * @LastEditTime: 2021-07-07 09:39:46
  * @LastEditors: Kotori Y
  * @Description: 
- * @FilePath: /fastscopy_frontend/src/pages/Druglikeness/DruglikenessResult/Index.vue
+ * @FilePath: /fastscopy_frontend/src/pages/Druglikeness/DruglikenessResult/DruglikenessMain.vue
  * @Disclam: I love Megumi forever and ever!!!
 -->
 <template>
