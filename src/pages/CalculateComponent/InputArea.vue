@@ -37,6 +37,14 @@ export default {
 
     }
   },
+  watch: {
+    smiles: {
+      immediate: true,
+      handler(value) {
+        this.$emit('contentChanged', value)
+      }
+    }
+  },
   mounted() {
     this.$bus.$on("clearArea", this.clearArea)
     this.$bus.$on("fillExample", this.fillExample)
@@ -59,4 +67,5 @@ textarea {
 textarea {
   margin: 10px auto;
 }
+
 </style>

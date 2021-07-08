@@ -11,10 +11,10 @@
   <div class="container">
     <form class="border p-3 border-top-0">
       <FillButton :smiles="exampleSmiles"/>
-      <Input/>
+      <Input v-on:contentChanged="contentChanged"/>
       <div class="row">
-        <clear-button/>
-        <submit-button :eventName="eventName" :params="params"/>
+        <clear-button :isEmpty="isEmpty"/>
+        <submit-button :eventName="eventName" :params="params" :isEmpty="isEmpty" />
       </div>
     </form>
   </div>
@@ -32,7 +32,13 @@ export default {
     return {
       exampleSmiles: "c1ccccc1\nCCCCCC",
       eventName: "evaluateDruglikeness",
+      isEmpty: true,
       params: {showSmiles: true}
+    }
+  },
+  methods: {
+    contentChanged (value) {
+      this.isEmpty = !value
     }
   },
   components: {
@@ -54,6 +60,6 @@ form {
 
 .row {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 </style>

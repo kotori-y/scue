@@ -1,11 +1,12 @@
 <template>
-  <div class="col-3 text-center">
+  <div :class="{'col-2': true, disabled: isEmpty}">
     <button
         aria-label="Reset"
         class="btn btn-danger"
         type="button"
         value="Reset"
         @click="clearArea"
+        :disabled="isEmpty"
     >
       Reset
     </button>
@@ -19,15 +20,25 @@ export default {
     clearArea() {
       this.$bus.$emit("clearArea")
     },
+  },
+  props: {
+    isEmpty: {
+      type: Boolean,
+      required: true,
+      default: true,
+    }
   }
 };
 </script>
 
 <style scoped>
-
 .btn:focus {
   outline: none;
   box-shadow: none;
   color: aliceblue;
+}
+
+.disabled {
+  cursor: not-allowed !important;
 }
 </style>
