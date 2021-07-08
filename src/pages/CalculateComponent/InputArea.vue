@@ -32,9 +32,10 @@ export default {
     async evaluateDruglikeness(params) {
       params.smiles = this.smiles.split(/\W+/)
       this.smiles = ""
+      this.$bus.$emit("changeBusyStatus")
       await this.$store.dispatch("evaluateDruglikeness", params);
+      this.$bus.$emit("changeBusyStatus")
       await this.$router.push({name: "DruglikenessResult"});
-
     }
   },
   watch: {

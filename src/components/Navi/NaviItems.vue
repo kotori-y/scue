@@ -46,7 +46,7 @@ export default {
       items: [
         { name: "Home", to: "/", dropdown: false, children: [] },
         {
-          name: "Servies",
+          name: "Services",
           to: "#",
           dropdown: true,
           children: [{ name: "Druglikeness", to: "/druglikeness" }],

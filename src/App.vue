@@ -7,29 +7,40 @@
  * @FilePath: /fastscopy_frontend/src/App.vue
 -->
 <template>
-  <div>
-    <Navi />
-    <router-view></router-view>
-    <Foot />
+  <div class="myContainer">
+    <div>
+      <Navi/>
+      <router-view></router-view>
+      <Foot/>
+    </div>
+    <Loader v-if="isBusy"></Loader>
   </div>
-  <!-- <Navi /> -->
 </template>
 
 <script>
 import Navi from "./components/Navi/Index";
 import Foot from "./components/Foot/Index"
+import Loader from "@/components/Loader";
 
 export default {
   name: "App",
+  data() {
+    return {
+      isBusy: false
+    }
+  },
   components: {
     Navi,
     Foot,
-    // Home
+    Loader
   },
+  mounted() {
+    this.$bus.$on("changeBusyStatus", () => this.isBusy = !this.isBusy)
+  }
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -38,4 +49,9 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+.myContainer {
+  position: relative;
+}
+
 </style>
