@@ -11,25 +11,17 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container px-5">
-      <router-link class="navbar-brand" to="/">{{ ProjectName }}</router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <NaviItems />
+      <img alt="" class="d-inline-block justify-content-center align-items-center mr-2" height="8%"
+           src="../../../public/imgs/logo.svg" width="8%">
+      <router-link class="navbar-brand HHH" to="/">{{ ProjectName }}</router-link>
+      <NaviItems/>
     </div>
   </nav>
 </template>
 
 <script>
 import NaviItems from "./NaviItems.vue";
+
 export default {
   name: "Navi",
   data() {
@@ -37,6 +29,22 @@ export default {
       ProjectName: "Scopy meets Vue",
     };
   },
-  components: { NaviItems },
+  components: {NaviItems},
 };
 </script>
+
+<style scoped>
+.HHH {
+  font-family: "Fira Code",sans-serif;
+  font-size: 24px;
+}
+
+img {
+  margin-top: 5px;
+}
+
+nav {
+  background-color: #1c1919 !important;
+}
+
+</style>
