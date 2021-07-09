@@ -5,7 +5,7 @@
         class="btn btn-success"
         type="button"
         value="Submit"
-        @click="doScopy(eventName, params)"
+        @click="doScopy(params, actionName, redirectName)"
         :disabled = "isEmpty"
     >
       Submit
@@ -17,19 +17,23 @@
 export default {
   name: "SubmitButton",
   methods: {
-    doScopy(eventName, params) {
-      this.$bus.$emit(eventName, params)
+    doScopy(params, actionName, redirectName) {
+      this.$bus.$emit("execScopy", params, actionName, redirectName)
     }
   },
   props: {
-    eventName: {
+    actionName: {
       type: String,
       required: true,
-      default: "druglikeness_evaluation"
+      default: "evaluateDruglikeness"
     },
     params: {
       type: Object,
       required: true
+    },
+    redirectName: {
+      type: String,
+      required: true,
     },
     isEmpty: {
       type: Boolean,

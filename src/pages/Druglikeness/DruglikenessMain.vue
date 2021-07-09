@@ -14,7 +14,8 @@
       <Input v-on:contentChanged="contentChanged"/>
       <div class="row">
         <clear-button :isEmpty="isEmpty"/>
-        <submit-button :eventName="eventName" :params="params" :isEmpty="isEmpty" />
+        <submit-button :actionName="actionName" :isEmpty="isEmpty" :params="params" :redirectName="redirectName"
+                       Name="eventName"/>
       </div>
     </form>
   </div>
@@ -31,13 +32,14 @@ export default {
   data() {
     return {
       exampleSmiles: "c1ccccc1\nCCCCCC",
-      eventName: "evaluateDruglikeness",
+      actionName: "evaluateDruglikeness",
+      redirectName: "DruglikenessResult",
       isEmpty: true,
       params: {showSmiles: true}
     }
   },
   methods: {
-    contentChanged (value) {
+    contentChanged(value) {
       this.isEmpty = !value
     }
   },

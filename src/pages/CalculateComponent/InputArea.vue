@@ -29,14 +29,14 @@ export default {
     clearArea() {
       this.smiles = "";
     },
-    async evaluateDruglikeness(params) {
+    async doScopy(params, actionName, redirectName) {
       params.smiles = this.smiles.split(/\W+/)
       this.smiles = ""
       this.$bus.$emit("changeBusyStatus")
-      await this.$store.dispatch("evaluateDruglikeness", params);
+      await this.$store.dispatch(actionName, params);
       this.$bus.$emit("changeBusyStatus")
-      await this.$router.push({name: "DruglikenessResult"});
-    }
+      await this.$router.push({name: redirectName});
+    },
   },
   watch: {
     smiles: {
@@ -49,17 +49,10 @@ export default {
   mounted() {
     this.$bus.$on("clearArea", this.clearArea)
     this.$bus.$on("fillExample", this.fillExample)
-    this.$bus.$on("evaluateDruglikeness", this.evaluateDruglikeness)
+    this.$bus.$on("execScopy", this.doScopy)
   },
-  beforeDestroy
-
-
-
-
-
-
-      () {
-    this.$bus.$off("evaluateDruglikeness")
+  beforeDestroy() {
+    this.$bus.$off("execScopy")
   }
 };
 </script>
