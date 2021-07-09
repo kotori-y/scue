@@ -9,28 +9,29 @@
 -->
 
 <template>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div id="navbarSupportedContent" class="collapse navbar-collapse">
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
       <li
-        :class="{ 'nav-item': true, dorpdown: item.dropdown }"
-        v-for="item in items"
-        :key="item.name"
+          v-for="item in items"
+          :key="item.name"
+          :class="{ 'nav-item': true, dorpdown: item.dropdown }"
       >
         <router-link
-          :class="{ 'nav-link': true, 'dropdown-toggle': item.dropdown }"
-          :to="item.to"
-          v-bind="dropdownProps(item.dropdown)"
-          >{{ item.name }}
+            v-bind="dropdownProps(item.dropdown)"
+            :class="{ 'nav-link': true, 'dropdown-toggle': item.dropdown }"
+            :to="item.to"
+        >{{ item.name }}
         </router-link>
         <ul
-          v-if="item.dropdown"
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownBlog"
+            v-if="item.dropdown"
+            aria-labelledby="navbarDropdownBlog"
+            class="dropdown-menu dropdown-menu-end"
         >
           <li v-for="_item in item.children" :key="_item.name">
-            <router-link class="dropdown-item" :to="_item.to">{{
-              _item.name
-            }}</router-link>
+            <router-link :to="_item.to" class="dropdown-item">{{
+                _item.name
+              }}
+            </router-link>
           </li>
         </ul>
       </li>
@@ -44,12 +45,13 @@ export default {
   data() {
     return {
       items: [
-        { name: "Home", to: "/", dropdown: false, children: [] },
+        {name: "Home", to: "/", dropdown: false, children: []},
         {
           name: "Services",
           to: "#",
           dropdown: true,
-          children: [{ name: "Druglikeness", to: "/druglikeness" }],
+          children: [{name: "Druglikeness", to: "/druglikeness"},
+            {name: "Frequent Hitters", to: "/fh"}],
         },
         // { name: "Concat", href: "concathtml" },
       ],

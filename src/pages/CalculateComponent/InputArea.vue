@@ -30,7 +30,7 @@ export default {
       this.smiles = "";
     },
     async doScopy(params, actionName, redirectName) {
-      params.smiles = this.smiles.split(/\W+/)
+      params.smiles = this.smiles.split(/\s+/)
       this.smiles = ""
       this.$bus.$emit("changeBusyStatus")
       await this.$store.dispatch(actionName, params);

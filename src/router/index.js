@@ -14,6 +14,10 @@ import Druglikeness from "@/pages/Druglikeness/Index";
 import DruglikenessResult from "@/pages/Druglikeness/DruglikenessResult/Index";
 import DruglikenessResultTable from "@/pages/Druglikeness/DruglikenessResult/DruglikenessResultTable.vue";
 import DruglikenessMain from "@/pages/Druglikeness/DruglikenessMain";
+import Fh from "@/pages/Fh/Index";
+import FhResult from "@/pages/Fh/FhResult/Index";
+import FhResultTable from "@/pages/Fh/FhResult/FhResultTable";
+import FhMain from "@/pages/Fh/FhMain";
 import EarlyVisit from "@/pages/ResultError/EarlyVisit";
 import {getCookie} from "../../public/js/scripts"
 
@@ -52,6 +56,37 @@ const router = new VueRouter({
               path: "error",
               component: EarlyVisit,
               name: "EarlyVisit",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: "/fh",
+      component: Fh,
+      children: [
+        {
+          path: "/",
+          component: FhMain,
+          name: "FhMain",
+        },
+        {
+          path: "result",
+          component: FhResult,
+          children: [
+            {
+              path: "/",
+              name: "FhResult",
+              component: FhResultTable,
+              beforeEnter: (to, from, next) => {
+                if (!getCookie("fh_result")) next({name: "EarlyVisitFH"});
+                else next();
+              },
+            },
+            {
+              path: "error",
+              component: EarlyVisit,
+              name: "EarlyVisitFH",
             },
           ],
         },
