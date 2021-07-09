@@ -9,9 +9,9 @@
 <template>
   <div class="myContainer">
     <div>
-      <Navi/>
+      <Navi v-if="!isNotFound"/>
       <router-view></router-view>
-      <Foot/>
+      <Foot v-if="!isNotFound"/>
     </div>
     <Loader v-if="isBusy"></Loader>
   </div>
@@ -26,13 +26,18 @@ export default {
   name: "App",
   data() {
     return {
-      isBusy: false
+      isBusy: false,
     }
   },
   components: {
     Navi,
     Foot,
     Loader
+  },
+  computed: {
+    isNotFound() {
+      return this.$route.name === "404"
+    }
   },
   mounted() {
     this.$bus.$on("changeBusyStatus", () => this.isBusy = !this.isBusy)

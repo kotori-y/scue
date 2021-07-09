@@ -19,7 +19,7 @@ import FhResult from "@/pages/Fh/FhResult/Index";
 import FhResultTable from "@/pages/Fh/FhResult/FhResultTable";
 import FhMain from "@/pages/Fh/FhMain";
 import EarlyVisit from "@/pages/ResultError/EarlyVisit";
-
+import NotFound from "@/pages/ResultError/NotFound";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -92,6 +92,15 @@ const router = new VueRouter({
         },
       ],
     },
+    {
+      path: "/404",
+      component: NotFound,
+      name: "404"
+    },
+    {
+      path: "*",
+      redirect: {name: "404"}
+    }
   ],
 });
 

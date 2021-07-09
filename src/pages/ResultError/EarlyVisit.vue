@@ -16,22 +16,20 @@ export default {
       s: 3
     }
   },
-  methods: {
-    countDown() {
-      async function interval(callback, delay) {
-        return new Promise((resolve) => {
-          let id = setInterval(() => {
-            callback(resolve, id);
-          }, delay);
-        });
-      }
-      interval((resolve, id) => {
-        this.s--
-        if (this.s < 0) {
-          clearInterval(id)
+  watch: {
+    s: {
+      immediate: true,
+      handler(value) {
+        if (value < 0) {
           this.$router.push({name: "home"})
         }
-        resolve()
+      }
+    }
+  },
+  methods: {
+    countDown() {
+      this.task = setInterval(()=> {
+        this.s--
       }, 1000)
     }
   },
@@ -41,6 +39,7 @@ export default {
     }, 100)
   },
   beforeDestroy() {
+    clearInterval(this.task)
     console.log("go back!")
   }
 };
