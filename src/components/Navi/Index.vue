@@ -9,14 +9,24 @@
 -->
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container px-5">
-      <img alt="" class="d-inline-block justify-content-center align-items-center mr-2" height="8%"
-           src="../../../public/imgs/logo.svg" width="8%">
-      <router-link class="navbar-brand HHH" to="/">{{ ProjectName }}</router-link>
-      <NaviItems/>
-    </div>
-  </nav>
+  <main class="flex-shrink-0">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <img alt="" class="d-inline-block justify-content-center align-items-center mr-2" height="6%"
+           src="../../../public/imgs/logo.svg" width="6%">
+      <div class="container px-12">
+        <!--        <img alt="" class="d-inline-block justify-content-center align-items-center mr-2" height="8%"-->
+        <!--             src="../../../public/imgs/logo.svg" width="8%">-->
+        <router-link class="navbar-brand HHH" to="/">{{ ProjectName }}</router-link>
+        <NaviItems/>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </main>
+
 </template>
 
 <script>
@@ -35,12 +45,13 @@ export default {
 
 <style scoped>
 .HHH {
-  font-family: "Fira Code",sans-serif;
-  font-size: 24px;
+  font-family: "Times New Roman", sans-serif;
+  font-size: 28px;
 }
 
 img {
   margin-top: 5px;
+  margin-left: 60px;
 }
 
 nav {

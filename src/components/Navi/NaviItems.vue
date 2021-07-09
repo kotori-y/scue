@@ -48,7 +48,7 @@ export default {
         {name: "Home", to: "/", dropdown: false, children: []},
         {
           name: "Services",
-          to: "#",
+          to: "javascript:void(0)",
           dropdown: true,
           children: [{name: "Druglikeness", to: "/druglikeness"},
             {name: "Frequent Hitters", to: "/fh"}],
@@ -73,3 +73,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+li {
+  font-size: 20px !important;
+}
+
+</style>
