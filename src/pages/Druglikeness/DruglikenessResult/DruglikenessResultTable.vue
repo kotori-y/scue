@@ -8,12 +8,17 @@
  * @Disclaim: I love Megumi forever and ever!!!
 -->
 <template>
-  <h5>{{ $store.state.druglikeness_result }}</h5>
+  <h5>{{ result }}</h5>
 </template>
 
 <script>
 export default {
-  name: "DruglikenessTable"
+  name: "DruglikenessTable",
+  computed: {
+    result() {
+      return sessionStorage.getItem("druglikeness_result")
+    }
+  }
 }
 </script>
 

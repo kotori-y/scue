@@ -11,15 +11,15 @@
 import Vue from "vue"
 import Vuex from "vuex"
 import axios from "axios"
-import {getCookie, setCookie} from "../../public/js/scripts"
+import {setCookie} from "../../public/js/scripts"
 
 Vue.use(Vuex)
 
 
 // init state
 const state = {
-  druglikeness_result: JSON.parse(getCookie("druglikeness_result")),
-  fh_result: JSON.parse(getCookie("fh_result"))
+  druglikeness_result: JSON.parse(sessionStorage.getItem("druglikeness_result")),
+  fh_result: JSON.parse(sessionStorage.getItem("fh_result"))
 }
 
 const actions = {
@@ -45,12 +45,14 @@ const actions = {
 
 const mutations = {
   EVALUATE_DRUGLIKENESS(state, value) {
+    sessionStorage.setItem("druglikeness_result", JSON.stringify(value))
     state.druglikeness_result = value
-    setCookie("druglikeness_result", JSON.stringify(value))
+    setCookie("druglikeness_result", JSON.stringify("true"))
   },
   FILTER_FH(state, value) {
+    sessionStorage.setItem("fh_result", JSON.stringify(value))
     state.fh_result = value
-    setCookie("fh_result", JSON.stringify(value))
+    setCookie("fh_result", JSON.stringify("true"))
   }
 }
 
