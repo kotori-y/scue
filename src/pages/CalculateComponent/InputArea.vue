@@ -51,7 +51,14 @@ export default {
     this.$bus.$on("fillExample", this.fillExample)
     this.$bus.$on("evaluateDruglikeness", this.evaluateDruglikeness)
   },
-  beforeCreate() {
+  beforeDestroy
+
+
+
+
+
+
+      () {
     this.$bus.$off("evaluateDruglikeness")
   }
 };
