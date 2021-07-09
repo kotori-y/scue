@@ -20,15 +20,16 @@
       >
         <div class="col-auto">
           <div class="small m-0 text-white">
-            Copyright &copy; Your Website 2021
+            Copyright &copy; Korori Yang 2021
           </div>
         </div>
         <div class="col-auto">
-          <a class="link-light small" href="#!">Privacy</a>
-          <span class="text-white mx-1">&middot;</span>
-          <a class="link-light small" href="#!">Terms</a>
-          <span class="text-white mx-1">&middot;</span>
-          <a class="link-light small" href="#!">Contact</a>
+          <p>DEV TOOLS</p>
+<!--          <a class="link-light small" href="#!">Privacy</a>-->
+<!--          <span class="text-white mx-1">&middot;</span>-->
+<!--          <a class="link-light small" href="#!">Terms</a>-->
+<!--          <span class="text-white mx-1">&middot;</span>-->
+<!--          <a class="link-light small" href="#!">Contact</a>-->
         </div>
       </div>
     </div>
@@ -47,24 +48,10 @@
           </div>
         </div>
         <div class="col-auto">
-          <a href="https://www.python.org/" target="_blank">
+          <a v-for="img in imgs" :href="img.href" target="_blank" :key="img.key">
             <img
               class="img-thumbnail"
-              src="/imgs/scopy.png"
-              alt=""
-            />
-          </a>
-          <a href="https://www.python.org/" target="_blank">
-            <img
-              class="img-thumbnail"
-              src="/static/common/footer/imgs/python-logo.png"
-              alt=""
-            />
-          </a>
-          <a href="https://www.python.org/" target="_blank">
-            <img
-              class="img-thumbnail"
-              src="/static/common/footer/imgs/python-logo.png"
+              :src="img.src"
               alt=""
             />
           </a>
@@ -77,11 +64,29 @@
 <script>
 export default {
   name: "Footer",
+  data() {
+    return {
+      imgs: [
+        {src: "/imgs/scopy.png", href: "https://github.com/kotori-y/Scopy", key: 322},
+        {src: "/imgs/vue.svg", href: "https://github.com/vuejs/vue", key: 503},
+        {src: "/imgs/fastapi.svg", href: "https://github.com/tiangolo/fastapi", key: 312}
+      ]
+    }
+  }
 };
 </script>
 
 <style lang="css" scoped>
   img {
-    width: 150px;
+    width: 70px;
+    background-color: transparent;
+    border: none !important;
   }
+
+  p {
+    color: #de86fe;
+    font-size: 27px;
+    margin-right: 60px;
+  }
+
 </style>
