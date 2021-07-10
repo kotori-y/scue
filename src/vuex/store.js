@@ -15,11 +15,10 @@ import {setCookie} from "../../public/js/scripts"
 
 Vue.use(Vuex)
 
-
 // init state
 const state = {
-  druglikeness_result: JSON.parse(sessionStorage.getItem("druglikeness_result")),
-  fh_result: JSON.parse(sessionStorage.getItem("fh_result"))
+  evaluateDruglikeness: null,
+  filterFH: null,
 }
 
 const actions = {
@@ -45,14 +44,14 @@ const actions = {
 
 const mutations = {
   EVALUATE_DRUGLIKENESS(state, value) {
-    sessionStorage.setItem("druglikeness_result", JSON.stringify(value))
-    state.druglikeness_result = value
-    setCookie("druglikeness_result", JSON.stringify("true"))
+    const _uuid = value["_uuid"]
+    setCookie("evaluateDruglikeness", _uuid)
+    state.evaluateDruglikeness = _uuid
   },
   FILTER_FH(state, value) {
-    sessionStorage.setItem("fh_result", JSON.stringify(value))
-    state.fh_result = value
-    setCookie("fh_result", JSON.stringify("true"))
+    const _uuid = value["_uuid"]
+    setCookie("filterFH", _uuid)
+    state.filterFH = _uuid
   }
 }
 

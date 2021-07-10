@@ -8,16 +8,28 @@
  * @Disclaim: I love Megumi forever and ever!!!
 -->
 <template>
-  <h5>{{ result }}</h5>
+  <h5>{{ res }}</h5>
 </template>
 
 <script>
+import {getCookie} from "../../../../public/js/scripts";
+import axios from "axios";
+
 export default {
   name: "DruglikenessTable",
-  computed: {
-    result() {
-      return sessionStorage.getItem("druglikeness_result")
+  data() {
+    return {
+      uuid: this.$store.state.evaluateDruglikeness || getCookie("evaluateDruglikeness"),
+      res: {}
     }
+  },
+  mounted() {
+    axios({
+      method: "get",
+      url: `http://192.168.1.128:8000/res/${this.uuid}`,
+    }).then(resp => {
+      this.res = resp.data
+    })
   }
 }
 </script>

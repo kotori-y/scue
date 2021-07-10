@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { v4 as uuidv4 } from 'uuid';
 export default {
   name: "InputArea",
   data() {
@@ -33,6 +34,7 @@ export default {
       params.smiles = this.smiles.split(/\s+/)
       this.smiles = ""
       this.$bus.$emit("changeBusyStatus")
+      params["result_id"] = sessionStorage.getItem(actionName) || uuidv4()
       await this.$store.dispatch(actionName, params);
       this.$bus.$emit("changeBusyStatus")
       await this.$router.push({name: redirectName});

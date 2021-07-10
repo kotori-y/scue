@@ -69,7 +69,8 @@ export default {
       imgs: [
         {src: "/imgs/scopy.png", href: "https://github.com/kotori-y/Scopy", key: 322},
         {src: "/imgs/vue.svg", href: "https://github.com/vuejs/vue", key: 503},
-        {src: "/imgs/fastapi.svg", href: "https://github.com/tiangolo/fastapi", key: 312}
+        {src: "/imgs/fastapi.svg", href: "https://github.com/tiangolo/fastapi", key: 312},
+        {src: "/imgs/redis.svg", href: "https://redis.io/", key: 676},
       ]
     }
   }

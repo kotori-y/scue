@@ -20,6 +20,7 @@ import FhResultTable from "@/pages/Fh/FhResult/FhResultTable";
 import FhMain from "@/pages/Fh/FhMain";
 import EarlyVisit from "@/pages/ResultError/EarlyVisit";
 import NotFound from "@/pages/ResultError/NotFound";
+import {getCookie} from "../../public/js/scripts";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -48,7 +49,7 @@ const router = new VueRouter({
               name: "DruglikenessResult",
               component: DruglikenessResultTable,
               beforeEnter: (to, from, next) => {
-                if (!sessionStorage.getItem("druglikeness_result")) next({name: "EarlyVisit"});
+                if (!getCookie("evaluateDruglikeness")) next({name: "EarlyVisit"});
                 else next();
               },
             },
@@ -79,7 +80,7 @@ const router = new VueRouter({
               name: "FhResult",
               component: FhResultTable,
               beforeEnter: (to, from, next) => {
-                if (!sessionStorage.getItem("fh_result")) next({name: "EarlyVisitFH"});
+                if (!getCookie("filterFH")) next({name: "EarlyVisitFH"});
                 else next();
               },
             },
