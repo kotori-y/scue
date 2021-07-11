@@ -16,6 +16,7 @@
 
 <script>
 import { v4 as uuidv4 } from 'uuid';
+import {getCookie} from "../../../public/js/scripts";
 export default {
   name: "InputArea",
   data() {
@@ -32,6 +33,8 @@ export default {
     },
     async doScopy(params, actionName, redirectName) {
       params.smiles = this.smiles.split(/\s+/)
+      params.uuid = getCookie(actionName)
+      console.log(params)
       this.smiles = ""
       this.$bus.$emit("changeBusyStatus")
       params["result_id"] = sessionStorage.getItem(actionName) || uuidv4()
