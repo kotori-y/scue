@@ -12,7 +12,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">Enter the characters in the picture</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="refreshCode"></button>
           </div>
           <div class="modal-body">
             <img :src="verifyCodeImg" alt="captcha" @click="getCode">
@@ -21,7 +21,7 @@
             <label style="color: red" v-show="timeout">timeout</label>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" @click="refreshCode">Close</button>
             <button type="button" class="btn btn-primary" @click="checkCode">OK</button>
           </div>
         </div>
@@ -101,6 +101,8 @@ export default {
       })
     },
     refreshCode() {
+      this.ans = ""
+      this.error = false
       if (this.timeout) {
         this.getCode()
       }
