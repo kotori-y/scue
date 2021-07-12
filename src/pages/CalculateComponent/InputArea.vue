@@ -34,10 +34,9 @@ export default {
     async doScopy(params, actionName, redirectName) {
       params.smiles = this.smiles.split(/\s+/)
       params.uuid = getCookie(actionName)
-      console.log(params)
       this.smiles = ""
       this.$bus.$emit("changeBusyStatus")
-      params["result_id"] = sessionStorage.getItem(actionName) || uuidv4()
+      params["uuid"] = sessionStorage.getItem(actionName) || uuidv4()
       await this.$store.dispatch(actionName, params);
       this.$bus.$emit("changeBusyStatus")
       await this.$router.push({name: redirectName});

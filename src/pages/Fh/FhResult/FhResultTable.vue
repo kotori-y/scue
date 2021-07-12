@@ -15,6 +15,10 @@ export default {
     }
   },
   mounted() {
+    if (this.uuid.split(/\W+/).length === 1) {
+      this.res = {"msg": "You are bad"}
+      return;
+    }
     axios({
       method: "get",
       url: `http://192.168.1.128:8000/res/${this.uuid}`,

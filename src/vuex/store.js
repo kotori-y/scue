@@ -11,7 +11,7 @@
 import Vue from "vue"
 import Vuex from "vuex"
 import axios from "axios"
-import {setCookie} from "../../public/js/scripts"
+import {getCookie, setCookie} from "../../public/js/scripts"
 
 Vue.use(Vuex)
 
@@ -26,7 +26,8 @@ const actions = {
     return axios({
       method: "post",
       url: "http://192.168.1.128:8000/cal",
-      data: params
+      data: params,
+      headers: {"x-token": getCookie("x-token")}
     }).then(resp => {
       context.commit("EVALUATE_DRUGLIKENESS", resp.data)
     })
@@ -35,7 +36,8 @@ const actions = {
     return axios({
       method: "post",
       url: "http://192.168.1.128:8000/fh",
-      data: params
+      data: params,
+      headers: {"x-token": getCookie("x-token")}
     }).then(resp => {
       context.commit("FILTER_FH", resp.data)
     })

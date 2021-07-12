@@ -11,11 +11,12 @@
   <div class="container">
     <form class="border p-3 border-top-0">
       <FillButton :smiles="exampleSmiles"/>
-      <Input v-on:contentChanged="contentChanged"/>
+      <Input v-on:contentChanged="contentChanged" />
       <div class="row">
         <clear-button :isEmpty="isEmpty"/>
         <submit-button :actionName="actionName" :isEmpty="isEmpty" :params="params" :redirectName="redirectName"
-                       Name="eventName"/>
+                       Name="eventName" v-if="!isBot"/>
+        <Modal v-if="isBot" v-on:isHuman="isHuman"/>
       </div>
     </form>
   </div>
@@ -26,6 +27,7 @@ import Input from "@/pages/CalculateComponent/InputArea";
 import FillButton from "@/pages/CalculateComponent/FillButton";
 import ClearButton from "@/pages/CalculateComponent/ClearButton";
 import SubmitButton from "@/pages/CalculateComponent/SubmitButton";
+import Modal from "@/components/Modal";
 
 export default {
   name: "DruglikenessMain",
@@ -35,12 +37,16 @@ export default {
       actionName: "evaluateDruglikeness",
       redirectName: "DruglikenessResult",
       isEmpty: true,
+      isBot: true,
       params: {showSmiles: true}
     }
   },
   methods: {
     contentChanged(value) {
       this.isEmpty = !value
+    },
+    isHuman() {
+      this.isBot = false
     }
   },
   components: {
@@ -48,6 +54,7 @@ export default {
     ClearButton,
     FillButton,
     Input,
+    Modal,
   },
 };
 </script>
