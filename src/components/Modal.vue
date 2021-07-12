@@ -93,6 +93,9 @@ export default {
         this.$emit("isHuman")
         const modal = document.querySelector(".modal-backdrop")
         modal.remove()
+        const body = document.querySelector("body")
+        body.classList.remove(...body.classList);
+        body.style = null
       }).catch(e => {
         console.log(e)
       })
