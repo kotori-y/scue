@@ -59,7 +59,7 @@ export default {
           this.ans = ""
           const input_ = document.querySelector(".ansInput")
           if (input_) {input_.blur()}
-        },10 * 1000)
+        },60 * 1000)
       }
     }
   },
